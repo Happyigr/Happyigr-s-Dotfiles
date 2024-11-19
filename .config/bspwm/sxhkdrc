@@ -1,0 +1,167 @@
+#  ╔═╗═╗ ╦╦ ╦╦╔═╔╦╗╦═╗╔═╗  - z0mbi3
+#  ╚═╗╔╩╦╝╠═╣╠╩╗ ║║╠╦╝║    - https://github.com/gh0stzk/dotfiles
+#  ╚═╝╩ ╚═╩ ╩╩ ╩═╩╝╩╚═╚═╝  - z0mbi3.zk@protonmail.com
+#			z0mbi3 config..
+
+
+# Open Terminal (alacritty)
+super + Return
+	OpenApps --terminal
+	
+# Open floating Terminal
+super + alt + Return
+	OpenApps --floating
+
+# Menu aplicaciones
+super + @space
+#	rofi -show drun -show-icons
+  OpenApps --menu
+
+# Theme Selector
+alt + @space
+	RiceSelector
+
+# Apps
+alt + Tab
+  OpenApps --apps
+
+# Power off, Reboot, Log out, Lockscreen, kill an app
+ctrl + super + alt + {r,q,k}
+	{systemctl reboot,bspc quit,xkill}
+
+# Apps
+super + alt + {1,2,3,4}
+     {OpenApps --ranger, \
+	 subl, \
+     OpenApps --nvim, \
+	 spotify}
+
+# nitrogen
+super + w
+  ChangeWallpapers
+
+# live wallpapers
+super + shift + w
+  livewallpaper.sh
+
+# stop live wallpapaer
+super + shift + s
+  killall mpv
+
+#colorpicker 
+super + p
+   colorpick.sh
+
+# Hide/Show Bar (Polybar and/or eww)
+super + {h,u}
+	HideBar {-h,-u}
+
+# turn on focus mode
+super + f
+  focus_mode.sh
+
+# turn on or off the touchpad
+super + {_, shift + } + l
+  xinput set-prop 14 194 {0,1}
+
+# Screenshot Now
+Print
+    flameshot gui
+
+# Screenshot Select
+ctrl + Print
+	flameshot screen
+
+# Reload sxhkd
+super + Escape
+	pkill -USR1 -x sxhkd; dunstify -u low -i ~/.config/bspwm/assets/reload.svg 'sxhkd' 'The configuration file has been reloaded successfully!'
+
+#
+# bspwm hotkeys
+#
+
+# Lockscreen 
+super + c
+    betterlockscreen -l
+
+# Reload BSPWM
+super + alt + r
+	bspc wm -r
+
+# close and kill
+super + {_,shift + }q
+	bspc node -{c,k}
+
+# expand a window by moving one of its side outward
+super + alt + {h,j,k,l}
+	bspc node -z {right -10 0,right 10 0,left -10 0,left 10 0}
+###
+
+
+# rotate desktop
+super + r
+	bspc node @/ --rotate {90,-90}
+
+# Circulate the leaves of the tree
+#super + c
+#	bspc node @/ --circulate {backward,forward}
+
+# Make split ratios balanced
+ruper + minus
+	bspc node @/ --balance
+
+# alternate between the tiled and monocle layout
+super + m
+	bspc desktop -l next
+
+# swap the current node and the biggest node
+super + g
+	bspc node -s biggest
+
+# set the window state
+super + {F1, F2, F3, F4}
+	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+# set the node flags
+super + {s}
+	bspc node -g {sticky}
+
+# focus the next/previous node in the current desktop
+super + {_,shift + }Tab
+ 	bspc node -f {next,prev}.local.!hidden.window
+
+# focus or send to the given desktop
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}'
+
+#
+# move/resize
+#
+
+# expand a window by moving one of its side outward
+super + {left,down,up,right}
+	bspc node -z {left -10 0,bottom 0 10,top 0 -10,right 10 0}
+
+# contract a window by moving one of its side inward
+super + shift + {left,down,up,right}
+	bspc node -z {right -10 0,top 0 10,bottom 0 -10,left 10 0}
+
+# move a floating window
+# alt + shift {Left,Down,Up,Right}
+# 	bspc node -v {-10 0,0 10,0 -10,10 0}
+
+# Manage brightness
+XF86MonBrightness{Up,Down}
+    sh Brightness {up,down}
+
+# Keyboard layout control
+alt + Shift_L
+    ChangeLocale.sh next
+
+# Volume control
+XF86Audio{RaiseVolume,LowerVolume,Mute}
+	Volume{ --inc, --dec, --toggle}
+
+# Music Control
+XF86Audio{Next,Prev,Play}
+	playerctl {next,previous,play-pause}

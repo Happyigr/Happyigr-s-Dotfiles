@@ -1,0 +1,140 @@
+#!/usr/bin/env bash
+#  ╔╗ ╔═╗╔═╗╦ ╦╔╦╗  - z0mbi3
+#  ╠╩╗╚═╗╠═╝║║║║║║  - https://github.com/gh0stzk/dotfiles
+#  ╚═╝╚═╝╩  ╚╩╝╩ ╩  - z0mbi3.zk@protonmail.com
+
+
+#  ┬┌┬┐┌─┐┌─┐┬─┐┌┬┐┌─┐┌┐┌┌┬┐  ┬  ┬┌─┐┬─┐┬┌─┐┌┐ ┬  ┌─┐┌─┐
+#  ││││├─┘│ │├┬┘ │ ├─┤│││ │   └┐┌┘├─┤├┬┘│├─┤├┴┐│  ├┤ └─┐
+#  ┴┴ ┴┴  └─┘┴└─ ┴ ┴ ┴┘└┘ ┴    └┘ ┴ ┴┴└─┴┴ ┴└─┘┴─┘└─┘└─┘
+
+export RICETHEME=$(<$HOME/.config/bspwm/.rice)
+PATH="$HOME/.config/bspwm/scripts:$PATH"
+
+## Fix java applications
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+#  ┌─┐┬ ┬┌┐┌┌─┐┌┬┐┬┌─┐┌┐┌┌─┐
+#  ├┤ │ │││││   │ ││ ││││└─┐
+#  └  └─┘┘└┘└─┘ ┴ ┴└─┘┘└┘└─┘
+
+function get_values() {
+DEFNETWORK=$(ip route | grep '^default' | awk '{print $5}' | head -n1)
+CARD=$(ls -1 /sys/class/backlight/)
+power_supply_files=$(ls /sys/class/power_supply/)
+
+for file in $power_supply_files
+do
+	if [ -e "/sys/class/power_supply/$file/capacity" ]; then
+		battery_file=$file
+    fi
+
+    if [ -e "/sys/class/power_supply/$file/online" ]; then
+        adapter_file=$file
+    fi
+done
+
+BATTERY="$battery_file"
+ADAPTER="$adapter_file"
+}
+
+set_values() {
+	if [[ "$DEFNETWORK" ]]; then
+		sed -i -e "s/sys_network_interface = .*/sys_network_interface = $DEFNETWORK/g" $HOME/.config/bspwm/scripts/system.ini
+	fi
+	if [[ "$ADAPTER" ]]; then
+		sed -i -e "s/sys_adapter = .*/sys_adapter = $ADAPTER/g" $HOME/.config/bspwm/scripts/system.ini
+	fi
+	if [[ "$BATTERY" ]]; then
+		sed -i -e "s/sys_battery = .*/sys_battery = $BATTERY/g" $HOME/.config/bspwm/scripts/system.ini
+	fi
+	if [[ "$CARD" ]]; then
+		sed -i -e "s/sys_graphics_card = .*/sys_graphics_card = $CARD/g" $HOME/.config/bspwm/scripts/system.ini
+	fi
+}
+
+if [[ ! -f "$SFILE" ]]; then
+	get_values
+	set_values
+	touch $HOME/.config/bspwm/scripts/.sys
+fi
+
+#  ┬ ┬┌─┐┬─┐┬┌─┌─┐┌─┐┌─┐┌─┐┌─┐┌─┐
+#  ││││ │├┬┘├┴┐└─┐├─┘├─┤│  ├┤ └─┐
+#  └┴┘└─┘┴└─┴ ┴└─┘┴  ┴ ┴└─┘└─┘└─┘
+
+workspaces() {
+	name=1
+	for monitor in $(bspc query -M); do
+		bspc monitor "${monitor}" -n "$name" -d '1' '2' '3' '4' '5' '6' '7'
+		# bspc monitor ${monitor} -n "$name" -d '' '' '' '' '' ''
+		(( name++ ))
+	done
+}
+
+workspaces
+
+#  ┌┐ ┌─┐┌─┐┬ ┬┌┬┐  ┌─┐┌─┐┌┐┌┌─┐┬┌─┐
+#  ├┴┐└─┐├─┘││││││  │  │ ││││├┤ ││ ┬
+#  └─┘└─┘┴  └┴┘┴ ┴  └─┘└─┘┘└┘└  ┴└─┘
+
+#bspc config external_rules_command $HOME/.config/bspwm/scripts/ExternalRules
+
+bspc config split_ratio                   0.52
+bspc config single_monocle                true
+bspc config borderless_monocle            false
+bspc config gapless_monocle               false
+
+bspc rule -a firefox desktop='^2' focus=on
+bspc rule -a telegram-desktop desktop='^3' focus=on
+bspc rule -a discord desktop='^3' focus=on
+bspc rule -a Spotify desktop='^6' focus=on
+bspc rule -a obsidian desktop='^1' focus=on
+
+# bspc wm --adopt-orphans
+
+#  ┬  ┌─┐┬ ┬┌┐┌┌─┐┬ ┬  ┌─┐┌─┐─┐ ┬┬ ┬  ┬─┐┬┌─┐┌─┐┌─┐
+#  │  ├─┤│ │││││  ├─┤  └─┐├┤ ┌┴┬┘└┬┘  ├┬┘││  ├┤ └─┐
+#  ┴─┘┴ ┴└─┘┘└┘└─┘┴ ┴  └─┘└─┘┴ └─ ┴   ┴└─┴└─┘└─┘└─┘
+
+# Terminate already running polybar, eww, picom, sxhkd and dunst instances
+processes=("polybar" "eww" "sxhkd" "dunst" "conky" "picom")
+for process in "${processes[@]}"; do
+  if pidof -q "$process"; then
+    pkill -x "$process" > /dev/null; sleep 0.1
+  fi
+done
+
+# Reload terminal colors
+cat $HOME/.config/bspwm/rices/$RICETHEME/alacritty.toml > $HOME/.config/alacritty/alacritty.toml
+
+# Launch picom // If you have old hardware or encounter problems 
+# uncomment the picom "--legacy-backends" line and comment the current one.
+#
+picom --config $HOME/.config/bspwm/rices/$RICETHEME/picom.conf &
+#
+#picom --legacy-backends --config $HOME/.config/bspwm/rices/$RICETHEME/picom.conf &
+
+# Launch bars and/or eww widgets
+$HOME/.config/bspwm/rices/$RICETHEME/Theme.sh
+
+# Set random wallpaper for this rice
+#feh -z --no-fehbg --bg-fill $HOME/.config/bspwm/rices/$RICETHEME/walls/
+# If you don't want the random wallpaper feature, comment the line above "feh -z..." 
+# and add the one you use.
+ChangeWallpapers
+
+# Launch dunst notification daemon
+dunst -config $HOME/.config/bspwm/rices/$RICETHEME/dunstrc &
+
+# Reload sxhkd daemon
+sxhkd -c $HOME/.config/bspwm/sxhkdrc &
+
+# Launch polkit
+pgrep -x polkit-gnome-au > /dev/null || /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+
+# Fix cursor
+xsetroot -cursor_name left_ptr
+
+# Launch todo conky
+# conky -d -c ~/.config/conky/todo/todo.conf

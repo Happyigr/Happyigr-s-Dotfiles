@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+export RICETHEME=$(<$HOME/.config/bspwm/.rice)
+
+nitrogen --set-zoom-fill --save --random $HOME/.config/bspwm/rices/$RICETHEME/wallpapers &
+
+
