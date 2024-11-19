@@ -18,3 +18,28 @@ fc-cache -rv
 ```
 + from the website https://fontawesome.com/download in the ~/.local/share/fonts/awesome/
 
+## My Apps
+
+- Firefox
+- Telegram
+- Aseprite
+- Moebius (ANSI Art)
+- Discord
+- Spotify
+- GIMP
+- Audacity
+- Arduine IDE?
+- RStudio?
+- WPS Office (Libreoffice mb)
+- Zoom?
+- Conky (Widgets on Desktop)
+- Burp 
+- Cool Retro Term (why not xD)
+- Figma
+- FontForge (Font preview)
+- FileZilla
+- IDA (Reverse Engineering)
+- Spline (3d Models)
+- VLC
+- Surreal DB?
+- Xmind
