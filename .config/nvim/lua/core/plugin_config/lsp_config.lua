@@ -32,28 +32,20 @@ lspconfig.cssls.setup({ ftp = "css", on_atatch = on_attach, capabilities = capab
 lspconfig.html.setup({ ftp = "html", on_atatch = on_attach, capabilities = capabilities })
 lspconfig.pyright.setup({ ftp = "python", on_atatch = on_attach, capabilities = capabilities })
 lspconfig.lua_ls.setup({ ftp = "lua", on_attach = on_attach, capabilities = capabilities })
-lspconfig.clangd.setup({ ftp = "cpp", on_attach = on_attach, capabilities = capabilities })
+lspconfig.clangd.setup({ ftp = { "cpp", "arduino" }, on_attach = on_attach, capabilities = capabilities })
 lspconfig.taplo.setup({ ftp = "toml", on_attach = on_attach, capabilities = capabilities })
 lspconfig.denols.setup({ ftp = "js", on_attach = on_attach, capabilities = capabilities })
 lspconfig.bashls.setup({ ftp = "sh", on_attach = on_attach, capabilities = capabilities })
-lspconfig.arduino_language_server.setup({ ftp = "arduino", on_attach = on_attach, capabilities = capabilities })
-lspconfig.r_language_server.setup({ ftp = { "r", "rmd" }, on_attach = on_attach, capabilities = capabilities })
-
--- local MY_FQBN = "arduino:avr:uno"
---
 -- lspconfig.arduino_language_server.setup({
--- 	ftp = "arduino",
--- 	on_attach = on_attach,
--- 	capabilities = capabilities,
+-- 	ftp = "ino",
 -- 	cmd = {
 -- 		"arduino-language-server",
--- 		"-cli",
--- 		"usr/bin/arduino-cli",
 -- 		"-cli-config",
--- 		"$HOME/.arduino15/arduino-cli.yaml",
+-- 		"/home/popich/.arduino15/arduino-cli.yaml",
 -- 		"-clangd",
 -- 		"/usr/bin/clangd",
--- 		"-fqbn",
--- 		MY_FQBN,
 -- 	},
+-- 	on_attach = on_attach,
+-- 	capabilities = capabilities,
 -- })
+lspconfig.r_language_server.setup({ ftp = { "r", "rmd" }, on_attach = on_attach, capabilities = capabilities })

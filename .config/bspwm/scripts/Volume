@@ -25,7 +25,7 @@ get_icon() {
 
 # Notify
 notify_user() {
-	${notify_cmd} -i "$icon" "Volume : $(get_volume)%"
+	${notify_cmd} -h string:image-path:"${icon}" "Volume : $(get_volume)%"
 }
 
 # Increase Volume
@@ -43,9 +43,9 @@ dec_volume() {
 # Toggle Mute
 toggle_mute() {
 	if [[ $(pamixer --get-mute) == false ]]; then
-		pamixer --toggle-mute && ${notify_cmd} -i "$iDIR/mute.png" "Mute"
+		pamixer --toggle-mute && ${notify_cmd} -h string:image-path:"$iDIR/mute.png" "Mute"
 	else
-		pamixer --toggle-mute && get_icon && ${notify_cmd} -i "$icon" "Unmute"
+  pamixer --toggle-mute && get_icon && ${notify_cmd} -h string:image-path:"${icon}" "Unmute"
 	fi
 }
 

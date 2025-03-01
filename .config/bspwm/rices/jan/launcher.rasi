@@ -19,7 +19,7 @@ configuration {
 
 /*****----- Global Properties -----*****/
 * {
-    font:                        "JetBrains Mono Bold 11";
+    font:                        "JetBrains Mono 20";
     background:                  #1f2329;
     background-alt:              #1f2329aa;
     foreground:                  #b8bfe5;
@@ -33,7 +33,7 @@ window {
     location:                    center;
     anchor:                      center;
     fullscreen:                  false;
-    width:                       1000px;
+    width:                       50%;
     height:                      50%;
     x-offset:                    0px;
     y-offset:                    0px;

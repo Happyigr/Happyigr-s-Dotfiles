@@ -68,6 +68,9 @@ super + {_, shift + } + l
 Print
     flameshot gui
 
+super + a
+    flameshot gui
+
 # Screenshot Select
 ctrl + Print
 	flameshot screen
@@ -131,6 +134,9 @@ super + {_,shift + }Tab
  	bspc node -f {next,prev}.local.!hidden.window
 
 # focus or send to the given desktop
+F2
+  bspc desktop -f last
+
 super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
 

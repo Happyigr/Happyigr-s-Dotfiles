@@ -1,3 +1,4 @@
+fpath=($HOME/.config/completion_zsh $fpath)
 export EDITOR='nvim'
 
 ### Added by Zinit's installer
@@ -26,11 +27,18 @@ zinit light MichaelAquilina/zsh-you-should-use
 
 ### Load Plugins
 autoload -U compinit && compinit
+compinit conda
 
 ### keybindings
 bindkey -e
 bindkey '^p' history-search-backward
-bindkey '^n' history-search-forward
+bindkey '^o' history-search-forward
+bindkey '^b' backward-word
+bindkey '^n' forward-word
+bindkey '^h' backward-char
+bindkey '^l' forward-char
+bindkey "^[[1;5D" backward-word
+bindkey "^[[1;5C" forward-word
 
 ### History
 HISTSIZE=10000
@@ -58,3 +66,20 @@ alias ..='cd ..'
 ### load spaship
 eval "$(starship init zsh)"
 eval "$(fzf --zsh)"
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/popich/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/popich/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/popich/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/popich/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+

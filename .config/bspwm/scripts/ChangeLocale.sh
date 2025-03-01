@@ -31,7 +31,7 @@ esac
 
 
 next_language=${languages[$next_index]}
-setxkbmap -layout ${layouts[$next_index]}
-dunstify "$next_language" -r 5554 -u normal -i $icon
+setxkbmap -layout "${layouts[$next_index]}"
+dunstify "$next_language" -u normal -h string:image-path:"${icon}"
 # Set the new language
 
