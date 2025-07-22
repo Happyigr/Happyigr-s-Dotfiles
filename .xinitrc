@@ -48,5 +48,5 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-vlc --no-audio --no-video-title-show --fullscreen --start-time 1 --stop-time 3 --play-and-exit Videos/ghoul.mp4
+# vlc --no-audio --no-video-title-show --fullscreen --start-time 1 --stop-time 3 --play-and-exit Videos/ghoul.mp4
 exec bspwm

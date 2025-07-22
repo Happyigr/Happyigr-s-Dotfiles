@@ -10,6 +10,7 @@
 
 export RICETHEME=$(<$HOME/.config/bspwm/.rice)
 PATH="$HOME/.config/bspwm/scripts:$PATH"
+RESTART_MODE=$(cat ~/.config/bspwm/restart_mode 2>/dev/null)
 
 ## Fix java applications
 export _JAVA_AWT_WM_NONREPARENTING=1
@@ -63,16 +64,36 @@ fi
 #  ││││ │├┬┘├┴┐└─┐├─┘├─┤│  ├┤ └─┐
 #  └┴┘└─┘┴└─┴ ┴└─┘┴  ┴ ┴└─┘└─┘└─┘
 
-workspaces() {
-	name=1
-	for monitor in $(bspc query -M); do
-		bspc monitor "${monitor}" -n "$name" -d '1' '2' '3' '4' '5' '6' '7'
-		# bspc monitor ${monitor} -n "$name" -d '' '' '' '' '' ''
-		(( name++ ))
-	done
+
+remote() {
+  xrandr --output HDMI-0 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DP-4 --off
+  bspc monitor HDMI-0 -d 1 2 3 4 5 6 7
 }
 
-workspaces
+workspaces() {
+  if [[ $(xrandr -q | grep "HDMI-0 connected") ]]; then
+    xrandr --output HDMI-0 --mode 1920x1080 --pos 3840x1080 --rotate normal --output DP-4 --primary --mode 3840x2160 --pos 0x0 --rotate normal
+    bspc monitor DP-4 -d 1 2 3 5 6
+    bspc monitor HDMI-0 -d 4 7 8 9
+
+  else
+    name=1
+    for monitor in $(bspc query -M); do
+      bspc monitor "${monitor}" -n "$name" -d '1' '2' '3' '4' '5' '6' '7'
+      # bspc monitor ${monitor} -n "$name" -d '' '' '' '' '' ''
+      (( name++ ))
+    done
+  fi
+}
+
+if [[ "$RESTART_MODE" = "remote" ]]; then
+  remote
+  sunshine &
+  openrgb --color 000000 &
+  openrgb --color 000000 &
+else
+  workspaces
+fi
 
 #  ┌┐ ┌─┐┌─┐┬ ┬┌┬┐  ┌─┐┌─┐┌┐┌┌─┐┬┌─┐
 #  ├┴┐└─┐├─┘││││││  │  │ ││││├┤ ││ ┬
@@ -110,10 +131,7 @@ cat $HOME/.config/bspwm/rices/$RICETHEME/alacritty.toml > $HOME/.config/alacritt
 
 # Launch picom // If you have old hardware or encounter problems 
 # uncomment the picom "--legacy-backends" line and comment the current one.
-#
 picom --config $HOME/.config/bspwm/rices/$RICETHEME/picom.conf &
-#
-#picom --legacy-backends --config $HOME/.config/bspwm/rices/$RICETHEME/picom.conf &
 
 # Launch bars and/or eww widgets
 $HOME/.config/bspwm/rices/$RICETHEME/Theme.sh
@@ -135,6 +153,8 @@ pgrep -x polkit-gnome-au > /dev/null || /usr/lib/polkit-gnome/polkit-gnome-authe
 
 # Fix cursor
 xsetroot -cursor_name left_ptr
+# swap ctrl and caps
+setxkbmap -option "ctrl:swapcaps"
 
 # Launch todo conky
 # conky -d -c ~/.config/conky/todo/todo.conf

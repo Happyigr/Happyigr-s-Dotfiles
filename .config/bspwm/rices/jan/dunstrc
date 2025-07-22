@@ -1,8 +1,6 @@
 #  ╔╦╗╦ ╦╔╗╔╔═╗╔╦╗  ╔═╗╔═╗╔╗╔╔═╗╦╔═╗
 #   ║║║ ║║║║╚═╗ ║   ║  ║ ║║║║╠╣ ║║ ╦	https://github.com/gh0stzk/dotfiles
 #  ═╩╝╚═╝╝╚╝╚═╝ ╩   ╚═╝╚═╝╝╚╝╚  ╩╚═╝	
-# For Cynthia rice
-
 [global]
 title = Dunst
 class = Dunst
@@ -15,21 +13,22 @@ offset = 10x92
 indicate_hidden = yes
 shrink = yes
 progress_bar_corner_radius = 20
-highlight = "#FFFFFF"
+
+frame_color = "#ae95c7"
+separator_color= frame
+highlight = "#ae95c7"
 
 transparency = 4
 separator_height = 2
 padding = 8
 horizontal_padding = 11
 frame_width = 3
-frame_color = "#aaa"
-separator_color = "#aaa"
 
 font = JetBrainsMono Nerd Font Medium 9
 
 line_height = 0
 markup = full
-format = "<span size='x-large' font_desc='JetBrainsMono Nerd Font Medium 9' weight='bold' foreground='#FFFFFF'>%s</span>\n%b"
+format = "<span size='x-large' font_desc='JetBrainsMono Nerd Font Medium 10' weight='bold' foreground='#f3f4f5'>%s</span>\n%b"
 alignment = center
 
 idle_threshold = 120
@@ -38,10 +37,10 @@ sort = no
 word_wrap = yes
 ignore_newline = no
 stack_duplicates = false
-hide_duplicate_count = yes
+hide_duplicate_count = no
 show_indicators = no
-sticky_history = no
-history_length = 20
+sticky_history = yes
+history_length = 5
 always_run_script = true
 corner_radius = 20
 icon_position = left
@@ -57,15 +56,16 @@ mouse_right_click = close_all
 
 [urgency_low]
 timeout = 3
-background = "#1f2329"
-foreground = "#b3b3b3"
+background = "#1e1e2e"
+foreground = "#cdd6f4"
 
 [urgency_normal]
 timeout = 6
-background = "#1f2329"
-foreground = "#b3b3b3"
+background = "#1e1e2e"
+foreground = "#cdd6f4"
 
 [urgency_critical]
 timeout = 0
-background = "#1f2329"
-foreground = "#b3b3b3"
+background = "#1e1e2e"
+foreground = "#cdd6f4"
+frame_color = "#fab387"

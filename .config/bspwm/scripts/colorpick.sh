@@ -14,9 +14,9 @@ killall gpick
 
 color_code=$(gpick -so)
 # Generating the colored block for notification
-magick -size 64x64 xc:"$color_code" ~/.config/bspwm/assets/colored_block.png &
+magick -size 64x64 xc:"${color_code}" ~/.config/bspwm/assets/colored_block.png &
 
-xclip -selection clipboard <<< "$color_code"
+xclip -selection clipboard <<< "${color_code:1}"
 dunstify -h string:image-path:/home/popich/.config/bspwm/assets/colored_block.png "$color_code" "Copied in clipboard"
 
 echo -e "Notification sent with color code: $color_code"

@@ -2,6 +2,9 @@
 
 export RICETHEME=$(<$HOME/.config/bspwm/.rice)
 
-nitrogen --set-zoom-fill --save --random $HOME/.config/bspwm/rices/$RICETHEME/wallpapers &
+nitrogen --set-zoom-fill --save --random $HOME/.config/bspwm/rices/$RICETHEME/wallpapers --head=0 &
+if [[ $(xrandr -q | grep "HDMI-0 connected") ]]; then
+  nitrogen --set-zoom-fill --save --random $HOME/.config/bspwm/rices/$RICETHEME/wallpapers --head=1 &
+fi
 
 

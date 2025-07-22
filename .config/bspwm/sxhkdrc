@@ -27,7 +27,7 @@ alt + Tab
 
 # Power off, Reboot, Log out, Lockscreen, kill an app
 ctrl + super + alt + {r,q,k}
-	{systemctl reboot,bspc quit,xkill}
+	{toggle_xserver_mode.sh ,bspc quit,xkill}
 
 # Apps
 super + alt + {1,2,3,4}
@@ -59,6 +59,9 @@ super + {h,u}
 # turn on focus mode
 super + f
   focus_mode.sh
+
+super + d
+  drawing
 
 # turn on or off the touchpad
 super + {_, shift + } + l
@@ -138,7 +141,7 @@ F2
   bspc desktop -f last
 
 super + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d} '^{1-9,10}'
+	bspc {desktop -f,node -d} '{1-9,10}'
 
 #
 # move/resize
