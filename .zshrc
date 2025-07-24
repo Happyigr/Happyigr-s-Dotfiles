@@ -38,7 +38,7 @@ bindkey '^b' backward-word
 bindkey '^n' forward-word
 bindkey '^h' backward-char
 bindkey '^l' forward-char
-bindkey '^v' bracketed-paste
+bindkey '^V' paste
 bindkey "^[[1;5D" backward-word
 bindkey "^[[1;5C" forward-word
 
