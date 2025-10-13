@@ -80,5 +80,5 @@ command = [
 command = " ".join(command)
 
 notify("Recognizing...")
-Controller().type(subprocess.getoutput(command))
+Controller().type(subprocess.getoutput(command)[2:])
 notify("Recognizing completed")

@@ -1,5 +1,5 @@
 fpath=($HOME/.config/completion_zsh $fpath)
-# export OPENAI_API_KEY=$(pass show api/openai 2>/dev/null)
+export PATH="/home/popich/Apps/bin/:$PATH"
 export EDITOR='nvim'
 
 ### Added by Zinit's installer
@@ -61,9 +61,11 @@ zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 
 ### Aliases
+alias fabric='fabric-ai'
 alias ls='ls --color'
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 alias ..='cd ..'
+alias chatgpt_api='export OPENAI_API_KEY=$(pass show api/openai 2>/dev/null)'
 
 ### load spaship
 eval "$(starship init zsh)"

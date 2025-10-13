@@ -7,12 +7,12 @@ class = Dunst
 monitor = 0
 follow = mouse
 width = 300
-height = 300
+height = (100, 100)
 origin = top-right
-offset = 10x92
+offset = (10, 92)
 indicate_hidden = yes
 shrink = yes
-progress_bar_corner_radius = 20
+progress_bar_corner_radius = 5
 
 frame_color = "#ae95c7"
 separator_color= frame
