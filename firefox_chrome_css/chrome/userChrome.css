@@ -44,6 +44,7 @@
 
 #back-button,
 #PanelUI-menu-button,
+.titlebar-buttonbox-container,
 #forward-button {
   display: none !important;
 }
