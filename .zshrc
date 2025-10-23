@@ -1,5 +1,6 @@
 fpath=($HOME/.config/completion_zsh $fpath)
-export PATH="/home/popich/Apps/bin/:$PATH"
+# Air Formatter + my Apps
+export PATH="$HOME/.local/bin/:/home/popich/Apps/bin/:$PATH"
 export EDITOR='nvim'
 
 ### Added by Zinit's installer
@@ -86,4 +87,3 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-

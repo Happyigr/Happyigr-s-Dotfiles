@@ -153,7 +153,7 @@ pgrep -x polkit-gnome-au >/dev/null || /usr/lib/polkit-gnome/polkit-gnome-authen
 # Fix cursor
 xsetroot -cursor_name left_ptr
 # swap ctrl and caps
-setxkbmap -option "ctrl:swapcaps"
+setxkbmap -option "ctrl:nocaps"
 
 pactl set-card-profile alsa_card.pci-0000_01_00.1 output:hdmi-stereo-extra1
 
