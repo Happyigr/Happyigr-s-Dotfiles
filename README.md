@@ -1,47 +1,49 @@
-# Happyigr's Dotfiles
+# Installation of Omarchy
+## Capslock to Ctrl
+In .config/hypr/input.conf add
+```kb_options = ctrl:nocaps```
 
-## Table of content
-
-
-# Description
-
-This dotfiles was made with the help of Zomby's dotfiles, and they were modified by me, and bringed to one place with GNU Stow, that are the collector of the symlinks
-
-# Setup
-
-Dont know yet)
-
-```bash
-sudo pacman -S polybar sxhkd bspwm  flameshot betterlockscreen rofi dunst gpcik ttf-jetbrains-mono-nerd ttf-jetbrains-mono unzip npm xclip r ueberzugpp starship poppler
-yay -S ttf-material-design-iconic-font betterlockscreen
-fc-cache -rv
-betterlockscreen -u "/path/to/image/for/lockscreen"
+## Change shortcuts
+- Super Tab changing window in desktop
+Add in .config/hypr/bindings.conf
 ```
-+ from the website https://fontawesome.com/download in the ~/.local/share/fonts/awesome/
-+ install https://store.kde.org/p/1305251 (candy icons for rofi)
+unbind = SUPER, TAB
+bind = SUPER, TAB, cyclenext
+```
 
-## My Apps
+## Deleted things
+- 1password
+- Typora (no vim motions) :( 
+-./config
+  - ghostty
 
-- Firefox
-- Telegram
-- Aseprite
-- Moebius (ANSI Art)
-- Discord
-- Spotify
-- GIMP
-- Audacity
-- Arduine IDE?
-- RStudio?
-- WPS Office (Libreoffice mb)
-- Zoom?
-- Conky (Widgets on Desktop)
-- Burp 
-- Cool Retro Term (why not xD)
-- Figma
-- FontForge (Font preview)
-- FileZilla
-- IDA (Reverse Engineering)
-- Spline (3d Models)
-- VLC
-- Surreal DB?
-- Xmind
+## Setup apps
+### Hyprmon for multiple Monitors
+```yay -S hyprmon-bin```
+
+### Rstudio and air formatter
+Install rstudio from yay. 
+
+### CLI
+1) starship
+2) Completions
+
+### nvim
+
+### Firefox
+1) Set it as standard Browser
+```xdg-settings set default-web-browser firefox.desktop```
+
+### ranger
+In .bashrc add:
+```alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'```
+Also install ueberzugpp
+```sudo pacman -Sy ueberzugpp```
+
+!TODO strange showing of images. 
+
+### Conda
+
+
+
+

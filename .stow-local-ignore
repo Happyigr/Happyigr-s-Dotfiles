@@ -1,4 +1,7 @@
 .git
 .gitignore
+.zshrc
+bspwm
+pacman.list
 firefox_chrome_css
 README.md
