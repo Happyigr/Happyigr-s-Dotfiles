@@ -12,6 +12,7 @@ SAVEHIST=$HISTSIZE
 HISTDUP=erase
 
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
+alias rm='trash-put'
 
 # Add your own exports, aliases, and functions here.
 #

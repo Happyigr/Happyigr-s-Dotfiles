@@ -18,6 +18,12 @@ bind = SUPER, TAB, cyclenext
   - ghostty
 
 ## Setup apps
+### Trash-put instead of rm
+```pacman -Sy trash-cli```
+
+In .bashrc add:
+```alias rm=trash-put```
+
 ### Hyprmon for multiple Monitors
 ```yay -S hyprmon-bin```
 
