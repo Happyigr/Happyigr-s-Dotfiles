@@ -1,6 +1,7 @@
 .git
 .gitignore
 .zshrc
+installation
 bspwm
 pacman.list
 firefox_chrome_css

@@ -7,7 +7,7 @@ source ~/.local/share/omarchy/default/bash/rc
 
 ### History
 HISTSIZE=10000
-HISTFILE=~/.zsh_history
+HISTFILE=~/.bash_history
 SAVEHIST=$HISTSIZE
 HISTDUP=erase
 
