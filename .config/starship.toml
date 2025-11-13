@@ -1,6 +1,6 @@
 format = """
 [░▒▓](#a3aed2)\
-[  ](bg:#a3aed2 fg:#090c0c)\
+[ \\($conda\\)  ](bg:#a3aed2 fg:#090c0c)\
 [](bg:#b199c9 fg:#a3aed2)\
 $directory\
 [](fg:#b199c9 bg:#394260)\
@@ -13,7 +13,8 @@ $golang\
 $php\
 [](fg:#212736 bg:#1d2230)\
 [ ](fg:#1d2230)\
-\n$character"""
+\n$character
+"""
 
 [directory]
 style = "fg:#252525 bg:#b199c9"
@@ -61,3 +62,7 @@ disabled = false
 time_format = "%R" # Hour:Minute Format
 style = "bg:#1d2230"
 format = '[[  $time ](fg:#a0a9cb bg:#1d2230)]($style)'
+
+[conda]
+ignore_base = false
+format = "[$environment](bg:#a3aed2 fg:#090c0c)"

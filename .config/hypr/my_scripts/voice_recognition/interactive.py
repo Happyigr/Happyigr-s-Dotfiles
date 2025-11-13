@@ -1,4 +1,4 @@
-#!/home/popich/miniconda3/bin/python3
+#!/home/popich/.miniconda3/bin/python3
 from pynput.keyboard import Controller, Key, Listener
 import sounddevice as sd
 import soundfile as sf

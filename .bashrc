@@ -1,13 +1,11 @@
 # If not running interactively, don't do anything (leave this at the top of this file)
 [[ $- != *i* ]] && return
 
+[[ $- == *i* ]] && source -- "$HOME/.local/share/blesh/ble.sh" --attach=none
+
 # All the default Omarchy aliases and functions
 # (don't mess with these directly, just overwrite them here!)
 source ~/.local/share/omarchy/default/bash/rc
-
-# if [[ ! -v BASH_COMPLETION_VERSINFO && -f ~/.config/bash/bash_completion ]]; then
-#   source ~/.config/bash/bash_completions/bash_completion
-# fi
 
 ### History
 HISTSIZE=10000
@@ -23,6 +21,7 @@ alias rm='trash-put'
 # Make an alias for invoking commands you use constantly
 # alias p='python'
 
+# for air formatter
 . "$HOME/.local/share/../bin/env"
 
 set -h
@@ -42,4 +41,4 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-set +h
+[[ ! ${BLE_VERSION-} ]] || ble-attach
