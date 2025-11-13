@@ -1,6 +1,7 @@
 .git
 .gitignore
 installation
+tests
 bspwm
 pacman.list
 firefox_chrome_css
