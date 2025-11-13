@@ -18,4 +18,13 @@ git clone --recursive --depth 1 --shallow-submodules https://github.com/akinomyo
 make -C ble.sh install PREFIX=~/.local
 echo 'source -- ~/.local/share/blesh/ble.sh' >> ~/.bashrc
 
-# install miniconda in ~/.miniconda3
+# install miniconda in ~/.miniconda3 for voice recognition
+# pip install pynput sounddevice soundfile
+
+# whisper.cli cpp
+# git clone https://github.com/ggml-org/whisper.cpp.git
+# cd whisper.cpp
+# sh ./models/download-ggml-model.sh base.en
+# make -j medium
+# cmake -B build -DGGML_CUDA=1
+# cmake --build build -j --config Release
