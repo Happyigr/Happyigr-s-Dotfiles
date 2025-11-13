@@ -1,0 +1,8 @@
+ranger
+firefox
+telegram-desktop
+ueberzugpp
+stow
+syncthing
+trash-cli
+tailscale

@@ -52,3 +52,4 @@ sudo pacman -Sy ueberzugpp
 4) conda
 5) Voice Recognition script
 6) CLi gray completions by the half of the command
+7) Language notifications, or lang in bar

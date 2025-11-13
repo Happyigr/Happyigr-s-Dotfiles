@@ -1,2 +1,5 @@
 .bak
 env.lua
+.config/alacritty/alacritty.toml
+.config/nvim/lua/plugins/theme.lua
+.config/hypr/monitors.conf

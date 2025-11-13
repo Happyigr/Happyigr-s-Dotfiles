@@ -1,1 +1,1 @@
-/home/popich_omarchy/.config/omarchy/current/theme/neovim.lua
+/home/popich/.config/omarchy/current/theme/neovim.lua
