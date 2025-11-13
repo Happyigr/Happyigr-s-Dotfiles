@@ -97,7 +97,7 @@ with sf.SoundFile(
 #             file.write(q.get())
 
 command = [
-    "$HOME/.config/hypr/my_scripts/voice_recognition/whisper-cli",
+    "$HOME/Apps/whisper.cpp/build/bin/whisper-cli",
     output_file_path,
     "-m",
     "$HOME/Apps/whisper.cpp/models/ggml-medium-q5_0.bin",
@@ -111,8 +111,9 @@ command = [
 
 command = " ".join(command)
 
-notify("Recognizing...", subprocess.getoutput(command)[2:])
-Controller().type(subprocess.getoutput(command)[2:])
+output = subprocess.getoutput(command)[2:]
+notify("Recognizing...", output)
+Controller().type(output)
 notify("Recognizing completed")
 
 if os.path.exists("/tmp/voice_recorder.pid"):
