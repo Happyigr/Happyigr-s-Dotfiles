@@ -21,11 +21,11 @@ set -h
 
 lazy_conda_init() {
     if ! type __conda_initialized &>/dev/null; then
-        source /home/popich_omarchy/.miniconda3/etc/profile.d/conda.sh
+        source $HOME/.miniconda3/etc/profile.d/conda.sh
         conda deactivate 2> /dev/null
         alias __conda_initialized=true
     fi
-    /home/popich_omarchy/.miniconda3/bin/conda "$@"
+    $HOME/.miniconda3/bin/conda "$@"
 }
 
 # >>> conda initialize >>>
