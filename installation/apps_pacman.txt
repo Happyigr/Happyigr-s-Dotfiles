@@ -6,3 +6,4 @@ stow
 syncthing
 trash-cli
 tailscale
+wtype
