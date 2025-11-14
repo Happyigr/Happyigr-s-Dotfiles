@@ -1,4 +1,4 @@
-#!/home/popich/.miniconda3/bin/python3
+#!/home/popich_omarchy/.miniconda3/bin/python3
 from pynput.keyboard import Controller, Key, Listener
 import signal
 import sys
@@ -113,7 +113,7 @@ command = " ".join(command)
 
 output = subprocess.getoutput(command)[2:]
 notify("Recognizing...", output)
-Controller().type(output)
+subprocess.run(f"wtype {output}", shell=True)
 notify("Recognizing completed")
 
 if os.path.exists("/tmp/voice_recorder.pid"):

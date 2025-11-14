@@ -15,30 +15,35 @@ HISTDUP=erase
 
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 alias rm='trash-put'
+alias conda='lazy_conda_init'
 
-# Add your own exports, aliases, and functions here.
-#
-# Make an alias for invoking commands you use constantly
-# alias p='python'
+set -h 
 
-# for air formatter
-. "$HOME/.local/share/../bin/env"
-
-set -h
+lazy_conda_init() {
+    if ! type __conda_initialized &>/dev/null; then
+        source /home/popich_omarchy/.miniconda3/etc/profile.d/conda.sh
+        conda deactivate 2> /dev/null
+        alias __conda_initialized=true
+    fi
+    /home/popich_omarchy/.miniconda3/bin/conda "$@"
+}
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/popich/.miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/popich/.miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/popich/.miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/popich/.miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
+# __conda_setup="$('/home/popich_omarchy/.miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+# if [ $? -eq 0 ]; then
+#     eval "$__conda_setup"
+# else
+#     if [ -f "/home/popich_omarchy/.miniconda3/etc/profile.d/conda.sh" ]; then
+#         . "/home/popich_omarchy/.miniconda3/etc/profile.d/conda.sh"
+#     else
+#         export PATH="/home/popich_omarchy/.miniconda3/bin:$PATH"
+#     fi
+# fi
+# unset __conda_setup
 # <<< conda initialize <<<
+
+# for air formatter
+. "$HOME/.local/share/../bin/env"
 
 [[ ! ${BLE_VERSION-} ]] || ble-attach
