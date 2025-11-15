@@ -28,3 +28,5 @@ echo 'source -- ~/.local/share/blesh/ble.sh' >> ~/.bashrc
 # make -j medium
 # cmake -B build -DGGML_CUDA=1
 # cmake --build build -j --config Release
+
+# For voice recognition, conda interpreter changing
