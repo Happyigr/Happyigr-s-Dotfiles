@@ -4,3 +4,5 @@ env.lua
 .config/nvim/lua/plugins/theme.lua
 .config/hypr/monitors.conf
 .config/hypr/my_scripts/voice_recognition/interactive.py
+.config/ranger/plugins/ranger_devicons/__pycache__/
+.config/ranger/colorschemes/__pycache__/
