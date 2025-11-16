@@ -6,6 +6,3 @@ bspwm
 pacman.list
 firefox_chrome_css
 README.md
-.config/alacritty/alacritty.toml
-.config/nvim/lua/plugins/theme.lua
-.config/hypr/monitors.conf
