@@ -25,7 +25,7 @@ def handle_signal(signum, frame):
 
 
 def notify(msg, submsg=None):
-    subprocess.run(f"notify-send '{msg}' '{submsg}'", shell=True)
+    subprocess.run(f'notify-send "{msg}" "{submsg}"', shell=True)
 
 
 def callback(indata, frames_count, time_info, status):
@@ -113,7 +113,7 @@ command = " ".join(command)
 
 output = subprocess.getoutput(command)[2:]
 notify("Recognizing...", output)
-subprocess.run(f"wtype '{output}'", shell=True)
+subprocess.run(f'wtype "{output}"', shell=True)
 notify("Recognizing completed")
 
 if os.path.exists("/tmp/voice_recorder.pid"):
