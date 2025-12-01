@@ -7,3 +7,7 @@ syncthing
 trash-cli
 tailscale
 wtype
+exiftool
+7zip
+yazi
+

@@ -30,3 +30,8 @@ echo 'source -- ~/.local/share/blesh/ble.sh' >> ~/.bashrc
 # cmake --build build -j --config Release
 
 # For voice recognition, conda interpreter changing
+
+# For Quarto: install from here https://quarto.org/docs/download/tarball.html?version=1.8.26&idPrefix=download
+# and use
+# sudo ln -s /home/popich/Apps/bin/quarto /usr/local/bin/quarto
+
