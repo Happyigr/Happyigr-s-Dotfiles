@@ -60,3 +60,8 @@ lazy_conda_init() {
 . "$HOME/.local/share/../bin/env"
 
 [[ ! ${BLE_VERSION-} ]] || ble-attach
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/popich/.lmstudio/bin"
+# End of LM Studio CLI section
+
