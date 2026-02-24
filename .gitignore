@@ -1,3 +1,6 @@
 .bak
 env.lua
 __pycache__
+.config/nvim/lua/plugins/theme.lua
+.config/hypr/monitors.conf
+.config/hypr/my_scripts/voice_recognition/interactive.py
