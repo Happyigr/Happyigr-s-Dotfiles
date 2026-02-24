@@ -1,2 +1,3 @@
 hyprmon-git
+epson-inkjet-printer-escpr
 
