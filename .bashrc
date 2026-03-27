@@ -1,7 +1,7 @@
 # If not running interactively, don't do anything (leave this at the top of this file)
-[[ $- != *i* ]] && return
-
-[[ $- == *i* ]] && source -- "$HOME/.local/share/blesh/ble.sh" --attach=none
+# [[ $- != *i* ]] && return
+#
+# [[ $- == *i* ]] && source -- "$HOME/.local/share/blesh/ble.sh" --attach=none
 
 # All the default Omarchy aliases and functions
 # (don't mess with these directly, just overwrite them here!)
@@ -59,7 +59,7 @@ lazy_conda_init() {
 # for air formatter
 . "$HOME/.local/share/../bin/env"
 
-[[ ! ${BLE_VERSION-} ]] || ble-attach
+# [[ ! ${BLE_VERSION-} ]] || ble-attach
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/home/popich/.lmstudio/bin"
