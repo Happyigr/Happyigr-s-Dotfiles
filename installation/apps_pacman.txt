@@ -13,4 +13,4 @@ openrgb
 7z
 cuda
 cuda-tools
-keepassxc
+thunderbird
