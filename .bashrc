@@ -21,6 +21,7 @@ unset -f z 2>/dev/null || true
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 alias rm='trash-put'
 alias conda='lazy_conda_init'
+alias pi='pi -e ~/.pi/agent/extensions/gondolin'
 
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
@@ -32,15 +33,6 @@ function y() {
 
 set -h 
 
-lazy_conda_init() {
-    if ! type __conda_initialized &>/dev/null; then
-# source $HOME/.miniconda3/etc/profile.d/conda.sh  # commented out by conda initialize
-        conda activate base 2> /dev/null
-        alias __conda_initialized=true
-    fi
-    $HOME/.miniconda3/bin/conda "$@"
-}
-
 # for air formatter
 . "$HOME/.local/share/../bin/env"
 
@@ -50,3 +42,19 @@ lazy_conda_init() {
 export PATH="$PATH:/home/popich/.lmstudio/bin"
 # End of LM Studio CLI section
 
+lazy_conda_init() {
+    if ! type __conda_initialized &>/dev/null; then
+      __conda_setup="$('/home/popich/.miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+      if [ $? -eq 0 ]; then
+          eval "$__conda_setup"
+      else
+          if [ -f "/home/popich/.miniconda3/etc/profile.d/conda.sh" ]; then
+              . "/home/popich/.miniconda3/etc/profile.d/conda.sh"
+          else
+              export PATH="/home/popich/.miniconda3/bin:$PATH"
+          fi
+      fi
+      unset __conda_setup
+    fi
+    $HOME/.miniconda3/bin/conda "$@"
+}
