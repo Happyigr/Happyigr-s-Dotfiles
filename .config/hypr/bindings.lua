@@ -12,18 +12,51 @@
 -- To disable all preinstalled app/webapp bindings, set:
 --   omarchy_preinstalled_bindings = false
 
--- Add a new binding.
--- o.bind("SUPER + SHIFT + R", "SSH", "alacritty -e ssh your-server")
+-- ============================================================================
+-- Migrated from the legacy bindings.conf (Omarchy 3 -> quattro .lua).
+--
+-- Chords that Quattro already binds identically (Terminal, Browser, File
+-- manager, Editor, Music, Docker, Signal, Obsidian, Music TUI, ...) are left
+-- to the Omarchy defaults and NOT redefined here, so nothing double-fires.
+-- Only unbinds and personal changes are kept below.
+-- ============================================================================
 
--- Change an existing binding by unbinding it first, then binding the key again.
--- This example changes SUPER+SPACE from the launcher to the Omarchy root menu.
--- hl.unbind("SUPER + SPACE")
--- o.bind("SUPER + SPACE", "Omarchy menu", "omarchy-menu toggle root")
+-- ---- Unbind Quattro defaults the personal bindings below replace/remove ----
 
--- Disable a default binding without replacing it.
--- hl.unbind("SUPER + SHIFT + B")
+-- SUPER+TAB: default "Next workspace" -> replaced with cycle-next below.
+hl.unbind("SUPER + TAB")
+-- SUPER+P: default "Pseudo window" -> replaced with color picker below.
+hl.unbind("SUPER + P")
+-- SUPER+PRINT: default color picker -> removed (color picker moved to SUPER+P).
+hl.unbind("SUPER + PRINT")
+-- SUPER+CTRL+X: default voxtype dictation toggle -> moved to SUPER+D below.
+hl.unbind("SUPER + CTRL + X")
+-- F9: default voxtype push-to-talk -> removed.
+hl.unbind("F9")
+-- SUPER+ALT+RETURN: default "Work" tmux session -> replaced with the tmux
+-- command below.
+hl.unbind("SUPER + ALT + RETURN")
 
--- Logitech MX Keys examples:
--- o.bind("SUPER + SHIFT + S", nil, "omarchy-capture-screenshot")
--- o.bind("SUPER + H", nil, "voxtype record toggle")
--- o.bind("SUPER + PERIOD", nil, "omarchy-shell shell toggle omarchy.emojis")
+-- ---- Personal bindings ----
+
+-- Cycle to the next window (replaces the default "next workspace").
+o.bind("SUPER + TAB", "Next window", hl.dsp.window.cycle_next())
+
+-- Open a new tmux session in the active terminal's directory.
+o.bind("SUPER + ALT + RETURN", "Tmux", 'uwsm-app -- xdg-terminal-exec --dir="$(omarchy-cmd-terminal-cwd)" tmux new')
+
+-- Screenshot a region to the clipboard.
+o.bind("SUPER + A", "Screenshot to clipboard", 'grim -g "$(slurp)" - | wl-copy')
+
+-- Color picker (moved from SUPER+PRINT; SUPER+PRINT is now unbound).
+o.bind("SUPER + P", "Color picker", "pkill hyprpicker || hyprpicker -a")
+
+-- Dictation toggle (moved from SUPER+CTRL+X; F9 push-to-talk removed).
+o.bind("SUPER + D", "Toggle dictation", "voxtype record toggle")
+
+-- System monitor in the terminal (SUPER+SHIFT+T, not bound by defaults).
+o.bind("SUPER + SHIFT + T", "Activity", "omarchy-launch-tui btop")
+
+-- Note: earlier versions also bound SUPER+P / changelocale etc. via .conf.
+-- Those are now here in .lua; the legacy .conf files were retired (see
+-- autostart.conf, bindings.conf, etc. renamed to .conf.bak).

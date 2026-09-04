@@ -1,0 +1,5 @@
+# Extra autostart processes
+# exec-once = uwsm-app -- my-service
+# exec-once = $HOME/.config/hypr/scripts/sunshine_start.sh
+exec-once = uwsm-app -- walker --gapplication-service
+# exec-once = lmstudio --minimize-to-tray

@@ -1,17 +1,5 @@
 -- Change the default Omarchy look'n'feel.
 
--- ============================================================================
--- Migrated from the legacy looknfeel.conf (Omarchy 3 -> quattro .lua).
--- ============================================================================
-
--- https://wiki.hypr.land/Configuring/Basics/Variables/#decoration
-hl.config({
-  decoration = {
-    -- Use round window corners (Omarchy default is 0).
-    rounding = 8,
-  },
-})
-
 -- https://wiki.hypr.land/Configuring/Basics/Variables/#general
 -- hl.config({
 --   general = {
