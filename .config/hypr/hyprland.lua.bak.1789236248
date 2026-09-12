@@ -28,8 +28,5 @@ require("default.hypr.toggles")
 -- Add any other personal Hyprland configuration below.
 -- o.window("qemu", { workspace = "5" })
 
--- Prevent Chromium from stealing focus when Claude extension activates it
-o.window("^chromium$", { focus_on_activate = false })
-
 -- hyprmon: managed monitor profile include
 require("hyprmon")
