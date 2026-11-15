@@ -5,3 +5,15 @@ ueberzug_scale  = 1.22
 ueberzug_offset = [0.5, 2.0, 2.0, 2.0]
 
 
+
+[opener]
+browser = [
+  { run = "xdg-open %s1", orphan = true, desc = "Browser", for = "linux" },
+]
+
+[open]
+prepend_rules = [
+  { mime = "text/html", use = ["browser", "edit"] },
+  { url = "*.html", use = ["browser", "edit"] },
+  { url = "*.htm",  use = ["browser", "edit"] },
+]
