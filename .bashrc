@@ -52,18 +52,16 @@ export PATH="$PATH:/home/popich/.lmstudio/bin"
 # End of LM Studio CLI section
 
 lazy_conda_init() {
-    if ! type __conda_initialized &>/dev/null; then
-      __conda_setup="$('/home/popich/.miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-      if [ $? -eq 0 ]; then
-          eval "$__conda_setup"
-      else
-          if [ -f "/home/popich/.miniconda3/etc/profile.d/conda.sh" ]; then
-              . "/home/popich/.miniconda3/etc/profile.d/conda.sh"
-          else
-              export PATH="/home/popich/.miniconda3/bin:$PATH"
-          fi
-      fi
-      unset __conda_setup
+    unalias conda 2>/dev/null
+    unset -f lazy_conda_init
+    __conda_setup="$("$HOME/.miniconda3/bin/conda" 'shell.bash' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
+    elif [ -f "$HOME/.miniconda3/etc/profile.d/conda.sh" ]; then
+        . "$HOME/.miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="$HOME/.miniconda3/bin:$PATH"
     fi
-    $HOME/.miniconda3/bin/conda "$@"
+    unset __conda_setup
+    \conda "$@"   # backslash: bypass the alias (it was expanded when this function was parsed)
 }
